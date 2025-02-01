@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RabbitMQ.Configure</name>
+    </assembly>
+    <members>
+        <member name="T:RabbitMQ.Configure.Configuration.ChannelConfiguration">
+            <summary>
+            Provides configuration methods for setting up RabbitMQ queues and exchanges.
+            This class demonstrates the various types of queues and their configurations.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Configuration.ChannelConfiguration.ConfigureQueuesAndExchanges(Microsoft.Extensions.DependencyInjection.IServiceCollection,RabbitMQ.Client.IConnection,System.Int32)">
+            <summary>
+            Configures RabbitMQ message queues and exchanges with different properties.
+            </summary>
+            <param name="services">Dependency injection container.</param>
+            <param name="connection">RabbitMQ connection instance.</param>
+            <param name="ttlForBroadcast">Time-to-live (TTL) for messages in broadcast queues (in milliseconds).</param>
+            <returns>Updated IServiceCollection with RabbitMQ configurations.</returns>
+        </member>
+        <member name="T:RabbitMQ.Configure.Configuration.RabbitMqConfiguration">
+            <summary>
+            Provides configuration methods for setting up RabbitMQ services, including 
+            connections, message handling, and queue-exchange bindings.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Configuration.RabbitMqConfiguration.ConfigureRabbitMq(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures RabbitMQ settings and registers necessary services in the dependency injection container.
+            </summary>
+            <param name="services">The service collection to which RabbitMQ services will be added.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with RabbitMQ configurations.</returns>
+        </member>
+        <member name="M:RabbitMQ.Configure.Configuration.RabbitMqConfiguration.GenerateConnection(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Generates a RabbitMQ connection using the provided configuration settings.
+            </summary>
+            <param name="services">The service collection where the connection will be registered.</param>
+            <param name="rabbitSettings">The RabbitMQ configuration settings.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with the RabbitMQ connection.</returns>
+        </member>
+        <member name="M:RabbitMQ.Configure.Configuration.RabbitMqConfiguration.ValidateRabbitMqSettings(Microsoft.Extensions.Configuration.IConfigurationSection)">
+            <summary>
+            Validates the necessary RabbitMQ settings before establishing a connection.
+            </summary>
+            <param name="rabbitSettings">The RabbitMQ configuration section.</param>
+            <exception cref="T:System.ArgumentException">Throws exception if required settings are missing or invalid.</exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Configuration.RabbitMqConfiguration.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers RabbitMQ-related services such as message handling and processing.
+            </summary>
+            <param name="services">The service collection where services will be registered.</param>
+            <returns>The updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with RabbitMQ services.</returns>
+        </member>
+        <member name="T:RabbitMQ.Configure.Enums.EnRabbitMQQueue">
+            <summary>
+            Enumeration for RabbitMQ queues.
+            This Enum defines all queue names to maintain consistency and avoid hardcoded strings.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuSolid">
+            <summary>
+            Solid queue - a durable queue for persistent messages.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuBroudcast">
+            <summary>
+            Broadcast queue - used for fanout exchange messages.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuTransient">
+            <summary>
+            Transient queue - deleted after the connection is closed.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuExclusive">
+            <summary>
+            Exclusive queue - can only be accessed by one connection and is deleted when the connection closes.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuAutoDelete">
+            <summary>
+            Auto-delete queue - deleted automatically when no consumers remain.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuMaxLength">
+            <summary>
+            Queue with a maximum number of messages allowed.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuTTL">
+            <summary>
+            Queue with message TTL (Time-to-Live).
+            Messages expire after a specific time.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuDelayed">
+            <summary>
+            Delayed queue - messages are delivered with a delay.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuDLX">
+            <summary>
+            Dead-letter queue (DLX) - stores undelivered or rejected messages.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuDeduplication">
+            <summary>
+            Deduplication queue - prevents duplicate messages from being inserted.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuPriority">
+            <summary>
+            Priority queue - messages are processed based on priority.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuLazy">
+            <summary>
+            Lazy queue - stores messages on disk instead of RAM.
+            </summary>
+        </member>
+        <member name="F:RabbitMQ.Configure.Enums.EnRabbitMQQueue.QueuQuorum">
+            <summary>
+            Quorum queue - highly available queue for distributed messaging.
+            </summary>
+        </member>
+        <member name="T:RabbitMQ.Configure.Interfaces.IMessageHandler">
+            <summary>
+            Represents an interface for handling messages received from RabbitMQ queues.
+            Implementing classes should provide logic to process incoming messages asynchronously.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Interfaces.IMessageHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Asynchronously processes the given message received from a RabbitMQ queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous processing operation.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the <paramref name="message"/> is null or empty.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Interfaces.IMessageHandlerFactory">
+            <summary>
+            Defines a factory interface for creating message handlers based on a given routing key.
+            Implementations of this factory are responsible for returning the appropriate 
+            <see cref="T:RabbitMQ.Configure.Interfaces.IMessageHandler"/> instance based on the provided routing key.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Interfaces.IMessageHandlerFactory.GetHandler(System.String)">
+            <summary>
+            Retrieves the appropriate message handler based on the specified routing key.
+            </summary>
+            <param name="routingKey">
+            The routing key used to determine the appropriate message handler.
+            </param>
+            <returns>
+            An instance of <see cref="T:RabbitMQ.Configure.Interfaces.IMessageHandler"/> capable of processing messages 
+            associated with the specified routing key, or <c>null</c> if no suitable handler is found.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when the <paramref name="routingKey"/> is null or empty.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Interfaces.IMessageProcessor">
+            <summary>
+            Defines the contract for processing messages received from RabbitMQ queues.
+            Implementing classes should handle message processing based on a routing key.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Interfaces.IMessageProcessor.ProcessMessageAsync(System.String,System.String)">
+            <summary>
+            Asynchronously processes a message associated with a specific routing key.
+            </summary>
+            <param name="routingKey">
+            The routing key used to identify the type of the message.
+            </param>
+            <param name="message">
+            The content of the message that needs to be processed.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when <paramref name="routingKey"/> or <paramref name="message"/> is null or empty.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Interfaces.IRabbitMQListener">
+            <summary>
+            Defines the contract for listening to RabbitMQ queues and maintaining a persistent connection.
+            Implementing classes should ensure the connection remains active and handle incoming messages.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Interfaces.IRabbitMQListener.EnsureConnectionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Ensures that the connection to RabbitMQ remains active and starts listening for incoming messages.
+            This method should handle reconnections in case of failures.
+            </summary>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> to observe for connection retries and to allow graceful shutdown.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation of maintaining the connection.
+            </returns>
+            <exception cref="T:System.OperationCanceledException">
+            Thrown if the operation is canceled via the <paramref name="cancellationToken"/>.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Interfaces.IRabbitMQSender">
+            <summary>
+            Defines the contract for sending messages to RabbitMQ queues.
+            Implementing classes should handle message transmission to the specified queue.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Interfaces.IRabbitMQSender.SendToQueue(RabbitMQ.Configure.Enums.EnRabbitMQQueue,System.String,System.String)">
+            <summary>
+            Asynchronously sends a message to the specified RabbitMQ queue.
+            </summary>
+            <param name="queueName">
+            The name of the RabbitMQ queue where the message should be sent.
+            </param>
+            <param name="loginKey">
+            A unique identifier for the sender of the message.
+            This can be used for tracking or authentication purposes.
+            </param>
+            <param name="data">
+            The message content to be sent to the queue.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation of sending the message.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="loginKey"/> or <paramref name="data"/> is null or empty.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Services.MessageHandlerFactory">
+            <summary>
+            Factory class responsible for providing message handlers based on routing keys.
+            This factory maintains a dictionary of registered message handlers and 
+            returns the appropriate handler for a given routing key.
+            </summary>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.MessageHandlerFactory.#ctor(System.Collections.Generic.IEnumerable{RabbitMQ.Configure.Interfaces.IMessageHandler})">
+            <summary>
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.MessageHandlerFactory"/> class.
+            </summary>
+            <param name="handlers">
+            A collection of message handlers to register in the factory.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="handlers"/> is null.
+            </exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.MessageHandlerFactory.GetHandler(System.String)">
+            <summary>
+            Retrieves the appropriate message handler for the specified routing key.
+            </summary>
+            <param name="routingKey">
+            The routing key used to determine the corresponding message handler.
+            </param>
+            <returns>
+            An instance of <see cref="T:RabbitMQ.Configure.Interfaces.IMessageHandler"/> capable of processing messages 
+            for the specified routing key.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="routingKey"/> is null or empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown if no handler is found for the specified routing key.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Services.MessageProcessor">
+            <summary>
+            Service responsible for processing messages received from RabbitMQ queues.
+            It retrieves the appropriate message handler based on the routing key and processes the message.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.MessageProcessor"/> class.
+            </summary>
+            <param name="handlerFactory">
+            The factory responsible for retrieving message handlers based on routing keys.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="handlerFactory"/> is null.
+            </exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.MessageProcessor.#ctor(RabbitMQ.Configure.Interfaces.IMessageHandlerFactory)">
+            <summary>
+            Service responsible for processing messages received from RabbitMQ queues.
+            It retrieves the appropriate message handler based on the routing key and processes the message.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.MessageProcessor"/> class.
+            </summary>
+            <param name="handlerFactory">
+            The factory responsible for retrieving message handlers based on routing keys.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="handlerFactory"/> is null.
+            </exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.MessageProcessor.ProcessMessageAsync(System.String,System.String)">
+            <summary>
+            Asynchronously processes a message using the appropriate handler for the given routing key.
+            </summary>
+            <param name="routingKey">
+            The routing key that determines the appropriate message handler.
+            </param>
+            <param name="message">
+            The message content that needs to be processed.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous message processing operation.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="routingKey"/> or <paramref name="message"/> is null or empty.
+            </exception>
+        </member>
+        <member name="T:RabbitMQ.Configure.Services.RabbitMQListener">
+            <summary>
+            Service responsible for listening to RabbitMQ queues and processing incoming messages.
+            This service maintains an active connection and listens for messages asynchronously.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.RabbitMQListener"/> class.
+            </summary>
+            <param name="connection">The RabbitMQ connection instance.</param>
+            <param name="channel">The RabbitMQ channel for consuming messages.</param>
+            <param name="serviceProvider">The service provider for dependency injection.</param>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.RabbitMQListener.#ctor(RabbitMQ.Client.IConnection,RabbitMQ.Client.IChannel,System.IServiceProvider)">
+            <summary>
+            Service responsible for listening to RabbitMQ queues and processing incoming messages.
+            This service maintains an active connection and listens for messages asynchronously.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.RabbitMQListener"/> class.
+            </summary>
+            <param name="connection">The RabbitMQ connection instance.</param>
+            <param name="channel">The RabbitMQ channel for consuming messages.</param>
+            <param name="serviceProvider">The service provider for dependency injection.</param>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.RabbitMQListener.EnsureConnectionAsync(System.Threading.CancellationToken)">
+            <summary>
+            Ensures the RabbitMQ connection is active and starts listening for incoming messages.
+            </summary>
+            <param name="cancellationToken">
+            A <see cref="T:System.Threading.CancellationToken"/> to handle graceful shutdown.
+            </param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.RabbitMQListener.StartListeningAsync">
+            <summary>
+            Starts listening to RabbitMQ queues and processes incoming messages asynchronously.
+            </summary>
+        </member>
+        <member name="T:RabbitMQ.Configure.Services.RabbitMQSender">
+            <summary>
+            Service responsible for sending messages to RabbitMQ queues.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.RabbitMQSender"/> class.
+            </summary>
+            <param name="connection">
+            The RabbitMQ connection used for sending messages.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="connection"/> is null.
+            </exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.RabbitMQSender.#ctor(RabbitMQ.Client.IConnection)">
+            <summary>
+            Service responsible for sending messages to RabbitMQ queues.
+            Initializes a new instance of the <see cref="T:RabbitMQ.Configure.Services.RabbitMQSender"/> class.
+            </summary>
+            <param name="connection">
+            The RabbitMQ connection used for sending messages.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="connection"/> is null.
+            </exception>
+        </member>
+        <member name="M:RabbitMQ.Configure.Services.RabbitMQSender.SendToQueue(RabbitMQ.Configure.Enums.EnRabbitMQQueue,System.String,System.String)">
+            <summary>
+            Asynchronously sends a message to the specified RabbitMQ queue.
+            </summary>
+            <param name="queueName">
+            The queue to which the message will be sent.
+            </param>
+            <param name="loginKey">
+            The login key associated with the message sender.
+            </param>
+            <param name="data">
+            The content of the message to be sent.
+            </param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="queueName"/>, <paramref name="loginKey"/>, or <paramref name="data"/> is null or empty.
+            </exception>
+            <exception cref="T:RabbitMQ.Client.Exceptions.AlreadyClosedException">
+            Thrown if the RabbitMQ connection is already closed.
+            </exception>
+            <exception cref="T:System.Exception">
+            Thrown if any unexpected error occurs while publishing the message.
+            </exception>
+        </member>
+    </members>
+</doc>

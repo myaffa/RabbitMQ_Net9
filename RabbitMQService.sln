@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Configure", "RabbitMQ.Configure\RabbitMQ.Configure.csproj", "{70F82306-21E2-4163-8631-4D74AE6DDABA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{823A9817-4630-4A99-8E39-02BE4F21AE00}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{74CED92E-188B-41F8-8CAE-400EBEAE39FB}"
+	ProjectSection(SolutionItems) = preProject
+		Docker\docker-compose.yml = Docker\docker-compose.yml
+		Docker\rabbitmq-setup.sh = Docker\rabbitmq-setup.sh
+		Docker\README.md = Docker\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F82306-21E2-4163-8631-4D74AE6DDABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F82306-21E2-4163-8631-4D74AE6DDABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F82306-21E2-4163-8631-4D74AE6DDABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F82306-21E2-4163-8631-4D74AE6DDABA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

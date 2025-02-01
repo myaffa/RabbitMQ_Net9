@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Runner</name>
+    </assembly>
+    <members>
+        <member name="T:Runner.Configurations.RabbitConfig">
+            <summary>
+            Provides configuration methods for setting up RabbitMQ in the application.
+            This class ensures that RabbitMQ services and message handlers are properly registered.
+            </summary>
+        </member>
+        <member name="M:Runner.Configurations.RabbitConfig.RabbitConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures RabbitMQ services and registers message handlers.
+            </summary>
+            <param name="services">The service collection where RabbitMQ services will be registered.</param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation, returning an updated <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </returns>
+        </member>
+        <member name="M:Runner.Configurations.RabbitConfig.RegisterMessageHandlers(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all available message handlers with the service collection.
+            Each handler is responsible for processing messages from a specific RabbitMQ queue.
+            </summary>
+            <param name="services">The service collection to which handlers will be added.</param>
+        </member>
+        <member name="T:Runner.Controllers.RabbitMqController">
+            <summary>
+            API Controller for sending messages to RabbitMQ queues.
+            Initializes a new instance of the <see cref="T:Runner.Controllers.RabbitMqController"/> class.
+            </summary>
+            <param name="rabbitMqSender">The RabbitMQ sender service.</param>
+        </member>
+        <member name="M:Runner.Controllers.RabbitMqController.#ctor(RabbitMQ.Configure.Interfaces.IRabbitMQSender)">
+            <summary>
+            API Controller for sending messages to RabbitMQ queues.
+            Initializes a new instance of the <see cref="T:Runner.Controllers.RabbitMqController"/> class.
+            </summary>
+            <param name="rabbitMqSender">The RabbitMQ sender service.</param>
+        </member>
+        <member name="M:Runner.Controllers.RabbitMqController.SendMessage(RabbitMQ.Configure.Enums.EnRabbitMQQueue,System.String)">
+            <summary>
+            Sends a message to the specified RabbitMQ queue.
+            </summary>
+            <param name="queue">The RabbitMQ queue to send the message to.</param>
+            <param name="text">The message content.</param>
+            <returns>An HTTP response indicating success or failure.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuAutoDeleteHandler">
+            <summary>
+            Handles messages from the Auto-Delete queue.
+            This queue is automatically deleted when no consumers remain.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuAutoDeleteHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Auto-Delete queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuBroudcastHandler">
+            <summary>
+            Handles messages from the Broadcast queue.
+            This queue is used for fanout exchange messages, meaning all consumers receive the same message.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuBroudcastHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Broadcast queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuDeduplicationHandler">
+            <summary>
+            Handles messages from the Deduplication queue.
+            This queue ensures that duplicate messages are not processed.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuDeduplicationHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Deduplication queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuDelayedHandler">
+            <summary>
+            Handles messages from the Delayed queue.
+            This queue delivers messages with a delay before processing.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuDelayedHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Delayed queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuDLXHandler">
+            <summary>
+            Handles messages from the Dead-Letter queue (DLX).
+            This queue stores undelivered or rejected messages for further processing.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuDLXHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Dead-Letter queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuExclusiveHandler">
+            <summary>
+            Handles messages from the Exclusive queue.
+            This queue is only accessible by the connection that created it and is deleted when the connection closes.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuExclusiveHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Exclusive queue.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuLazyHandler">
+            <summary>
+            Handles messages from the Lazy queue.
+            This queue stores messages on disk instead of RAM to optimize memory usage.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuLazyHandler.HandleMessageAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Runner.Messaging.QueuMaxLengthHandler">
+            <summary>
+            Handles messages from the Max-Length queue.
+            This queue has a maximum number of messages allowed before older messages are dropped.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuMaxLengthHandler.HandleMessageAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Runner.Messaging.QueuPriorityHandler">
+            <summary>
+            Handles messages from the Priority queue.
+            Messages are processed based on priority level.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuPriorityHandler.HandleMessageAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Runner.Messaging.QueuQuorumHandler">
+            <summary>
+            Handles messages from the Quorum queue.
+            This is a highly available, replicated queue used in clustered environments.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuQuorumHandler.HandleMessageAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Runner.Messaging.QueuSolidHandler">
+            <summary>
+            Handles messages from the Solid queue.
+            This queue is durable and ensures message persistence across broker restarts.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuSolidHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Solid queue.
+            This queue ensures that messages are not lost during server restarts.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuTransientHandler">
+            <summary>
+            Handles messages from the Transient queue.
+            This queue is non-durable and will be deleted when the connection is closed.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuTransientHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the Transient queue.
+            Messages in this queue do not persist across broker restarts.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+        <member name="T:Runner.Messaging.QueuTTLHandler">
+            <summary>
+            Handles messages from the TTL (Time-To-Live) queue.
+            This queue holds messages for a specified duration before they expire.
+            </summary>
+        </member>
+        <member name="M:Runner.Messaging.QueuTTLHandler.HandleMessageAsync(System.String)">
+            <summary>
+            Processes a message received from the TTL queue.
+            Messages in this queue have a predefined lifespan and are discarded after expiration.
+            </summary>
+            <param name="message">The message content to be processed.</param>
+            <returns>A completed task once processing is finished.</returns>
+        </member>
+    </members>
+</doc>

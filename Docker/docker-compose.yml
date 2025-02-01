@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq-setup.sh:/etc/rabbitmq-setup.sh
+    entrypoint: ["/bin/bash", "/etc/rabbitmq-setup.sh"]
+    networks:
+      - internal_network
+    restart: always
+
+networks:
+  internal_network:
+    driver: bridge
+
+volumes:
+  rabbitmq_data:  # Volume for persisting RabbitMQ data

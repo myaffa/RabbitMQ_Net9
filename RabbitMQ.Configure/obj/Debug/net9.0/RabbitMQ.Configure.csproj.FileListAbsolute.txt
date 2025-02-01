@@ -1,0 +1,15 @@
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\bin\Debug\net9.0\Configuration\appsettings.rabbitmq.json
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\bin\Debug\net9.0\RabbitMQ.Configure.deps.json
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\bin\Debug\net9.0\RabbitMQ.Configure.dll
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\bin\Debug\net9.0\RabbitMQ.Configure.pdb
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\bin\Debug\net9.0\RabbitMQ.Configure.xml
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.csproj.AssemblyReference.cache
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.AssemblyInfoInputs.cache
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.AssemblyInfo.cs
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.csproj.CoreCompileInputs.cache
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.dll
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\refint\RabbitMQ.Configure.dll
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.xml
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\RabbitMQ.Configure.pdb
+C:\Users\SAI Programmer\source\repos\RabbitMQService\RabbitMQ.Configure\obj\Debug\net9.0\ref\RabbitMQ.Configure.dll
