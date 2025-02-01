@@ -1,5 +1,22 @@
 # RabbitMQ Configure In .NET9
 
+## Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Error Handling](#error-handling)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Disclaimer](#disclaimer)
+
+---
+
 ## Overview
 
 This project provides a sample structure with an easy-to-use approach for managing message queues, listeners, and processing messages efficiently using the **RabbitMQ.Client library (version 7.0.0) in .NET 9**. You can use this project as a template to create your own suitable implementation for your applications.
