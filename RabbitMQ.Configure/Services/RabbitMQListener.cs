@@ -19,13 +19,7 @@ namespace RabbitMQ.Configure.Services {
 		private readonly IServiceProvider _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider), "Service provider cannot be null.");
 		private readonly IConnection _connection = connection ?? throw new ArgumentNullException(nameof(connection), "RabbitMQ connection cannot be null.");
 
-		/// <summary>
-		/// Ensures the RabbitMQ connection is active and starts listening for incoming messages.
-		/// </summary>
-		/// <param name="cancellationToken">
-		/// A <see cref="CancellationToken"/> to handle graceful shutdown.
-		/// </param>
-		/// <returns>A task representing the asynchronous operation.</returns>
+		/// <inheritdoc/>
 		public async Task EnsureConnectionAsync(CancellationToken cancellationToken) {
 			if (_connection.IsOpen) {
 				Console.WriteLine("✅ RabbitMQ connection is open. Starting to listen...");

@@ -5,19 +5,20 @@
 	/// </summary>
 	public interface IMessageProcessor {
 		/// <summary>
-		/// Asynchronously processes a message associated with a specific routing key.
+		/// <summary>
+		/// Asynchronously processes a message using the appropriate handler for the given routing key.
 		/// </summary>
 		/// <param name="routingKey">
-		/// The routing key used to identify the type of the message.
+		/// The routing key that determines the appropriate message handler.
 		/// </param>
 		/// <param name="message">
-		/// The content of the message that needs to be processed.
+		/// The message content that needs to be processed.
 		/// </param>
 		/// <returns>
-		/// A <see cref="Task"/> representing the asynchronous operation.
+		/// A <see cref="Task"/> representing the asynchronous message processing operation.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		/// Thrown when <paramref name="routingKey"/> or <paramref name="message"/> is null or empty.
+		/// Thrown if <paramref name="routingKey"/> or <paramref name="message"/> is null or empty.
 		/// </exception>
 		Task ProcessMessageAsync(string routingKey, string message);
 	}

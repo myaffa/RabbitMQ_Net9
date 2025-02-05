@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}|Runner\\Runner.csproj|c:\\users\\sai programmer\\documents\\github\\rabbitmq_net9\\runner\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{DE8DC2F3-D659-423A-BDE6-6BB6C76963CE}|Runner\\Runner.csproj|solutionrelative:runner\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\kambi\\OneDrive\\Documents\\GitHub\\RabbitMQ_Net9\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "README.md",
-              "DocumentMoniker": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\Runner\\README.md",
-              "RelativeDocumentMoniker": "Runner\\README.md",
-              "ToolTip": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\Runner\\README.md",
-              "RelativeToolTip": "Runner\\README.md",
-              "ViewState": "AgIAACEAAAAAAAAAAAAwwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-02-01T20:52:25.395Z",
-              "EditorCaption": ""
             }
           ]
         },

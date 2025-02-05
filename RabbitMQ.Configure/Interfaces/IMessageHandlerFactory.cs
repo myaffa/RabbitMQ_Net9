@@ -6,17 +6,20 @@
 	/// </summary>
 	public interface IMessageHandlerFactory {
 		/// <summary>
-		/// Retrieves the appropriate message handler based on the specified routing key.
+		/// Retrieves the appropriate message handler for the specified routing key.
 		/// </summary>
 		/// <param name="routingKey">
-		/// The routing key used to determine the appropriate message handler.
+		/// The routing key used to determine the corresponding message handler.
 		/// </param>
 		/// <returns>
 		/// An instance of <see cref="IMessageHandler"/> capable of processing messages 
-		/// associated with the specified routing key, or <c>null</c> if no suitable handler is found.
+		/// for the specified routing key.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		/// Thrown when the <paramref name="routingKey"/> is null or empty.
+		/// Thrown if <paramref name="routingKey"/> is null or empty.
+		/// </exception>
+		/// <exception cref="InvalidOperationException">
+		/// Thrown if no handler is found for the specified routing key.
 		/// </exception>
 		IMessageHandler? GetHandler(string routingKey);
 	}

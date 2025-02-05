@@ -31,22 +31,7 @@ namespace RabbitMQ.Configure.Services {
 			}
 		}
 
-		/// <summary>
-		/// Retrieves the appropriate message handler for the specified routing key.
-		/// </summary>
-		/// <param name="routingKey">
-		/// The routing key used to determine the corresponding message handler.
-		/// </param>
-		/// <returns>
-		/// An instance of <see cref="IMessageHandler"/> capable of processing messages 
-		/// for the specified routing key.
-		/// </returns>
-		/// <exception cref="ArgumentNullException">
-		/// Thrown if <paramref name="routingKey"/> is null or empty.
-		/// </exception>
-		/// <exception cref="InvalidOperationException">
-		/// Thrown if no handler is found for the specified routing key.
-		/// </exception>
+		/// <inheritdoc/>
 		public IMessageHandler GetHandler(string routingKey) {
 			if (string.IsNullOrWhiteSpace(routingKey))
 				throw new ArgumentNullException(nameof(routingKey), "Routing key cannot be null or empty.");

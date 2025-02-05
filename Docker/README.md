@@ -1,32 +1,30 @@
-# RabbitMQ Docker Setup
+﻿# RabbitMQ Docker Setup
 
-## Contents
-
+## 📌 Contents
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
 - [Files Overview](#files-overview)
 - [Cleanup](#cleanup)
 - [Troubleshooting](#troubleshooting)
+- [License](#license)
 - [Author](#author)
 - [Disclaimer](#disclaimer)
 
 ---
 
-## Overview
+## 📖 Overview
+This directory contains the necessary files to set up a **RabbitMQ server** using Docker. It provides a simple way to deploy a **message broker** with a management interface for monitoring and administration.
 
-This directory contains the necessary files to set up a RabbitMQ server using Docker. It provides a simple way to deploy a message broker with a management interface for monitoring and administration.
-
-## Prerequisites
-
+## 🛠 Prerequisites
 Ensure you have the following installed before proceeding:
 
 - **Docker**
 - **Docker Compose**
 
-## Setup Instructions
+## 🚀 Setup Instructions
 
-### 1. Start RabbitMQ
+### 1️⃣ Start RabbitMQ
 Run the following command to start RabbitMQ using Docker Compose:
 
 ```sh
@@ -34,25 +32,25 @@ docker-compose up -d
 ```
 This will pull the RabbitMQ image (with the management UI) and start the container.
 
-### 2. Verify RabbitMQ is Running
+### 2️⃣ Verify RabbitMQ is Running
 Access the RabbitMQ management UI by visiting:
 
 ```
 http://localhost:15672/
 ```
 
-Default login credentials:
+**Default login credentials:**
 - **Username:** admin
 - **Password:** password
 
-### 3. Access the RabbitMQ Container
+### 3️⃣ Access the RabbitMQ Container
 To enter the RabbitMQ container shell:
 
 ```sh
 docker exec -it rabbitmq bash
 ```
 
-### 4. Enable Delayed Message Exchange Plugin
+### 4️⃣ Enable Delayed Message Exchange Plugin
 To enable the `rabbitmq_delayed_message_exchange` plugin:
 
 ```sh
@@ -71,17 +69,17 @@ Enable the plugin:
 rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 ```
 
-### 5. Restart RabbitMQ
+### 5️⃣ Restart RabbitMQ
 Restart RabbitMQ after enabling the plugin:
 ```sh
 rabbitmqctl stop
 rabbitmq-server -detached
 ```
 
-## Files Overview
+## 📂 Files Overview
 
 ### `docker-compose.yml`
-This file defines the RabbitMQ service with the following configuration:
+This file defines the **RabbitMQ service** with the following configuration:
 
 - **Ports:**
   - `5672:5672` (AMQP protocol for messaging)
@@ -98,10 +96,10 @@ This file defines the RabbitMQ service with the following configuration:
 This script:
 - Starts the RabbitMQ server.
 - Waits for it to fully initialize.
-- Adds a default vhost and sets up permissions for the `admin` user.
+- Adds a default **vhost** and sets up permissions for the `admin` user.
 - Keeps the container running indefinitely.
 
-## Cleanup
+## 🗑️ Cleanup
 
 To stop and remove the RabbitMQ container:
 ```sh
@@ -113,8 +111,7 @@ To remove all data:
 docker volume rm rabbitmq_data
 ```
 
-## Troubleshooting
-
+## 🛠 Troubleshooting
 If you encounter issues:
 
 - Check container logs:
@@ -130,18 +127,17 @@ If you encounter issues:
   rabbitmqctl status
   ```
 
-## Author
+## 📜 License
+This project is licensed under the **MIT License**.
 
-[Kambiz Shahriarynasab]  
-[[saiprogrammerk@gmail.com](mailto:saiprogrammerk@gmail.com)]  
-[[https://t.me/pr_kami](https://t.me/pr_kami)]  
-[https://www.instagram.com/pr.kami.sh/]  
-[[https://www.youtube.com/channel/UCqjjdsFRXliDa7K612BZtmA](https://www.youtube.com/channel/UCqjjdsFRXliDa7K612BZtmA)]  
-[https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile]
+## 👤 Author
+**Kambiz Shahriarynasab**  
+📧 [saiprogrammerk@gmail.com](mailto:saiprogrammerk@gmail.com)  
+🔗 [Telegram](https://t.me/pr_kami)  
+📷 [Instagram](https://www.instagram.com/pr.kami.sh/)  
+📺 [YouTube](https://www.youtube.com/channel/UCqjjdsFRXliDa7K612BZtmA)  
+💼 [LinkedIn](https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile)
 
-## Disclaimer
-
-The author of this project assumes no responsibility for any issues, damages, or losses that may arise from the use of this code. The project is provided "as is" without any warranties, including but not limited to functionality, security, or suitability for a particular purpose. Users should thoroughly test and verify the implementation in their own environments before deploying it in production.
-
----
+## ⚠️ Disclaimer
+The author assumes no responsibility for any issues, damages, or losses that may arise from the use of this code. The project is provided **"as is"** without any warranties. Users should verify the implementation in their environments before deploying it in production.
 

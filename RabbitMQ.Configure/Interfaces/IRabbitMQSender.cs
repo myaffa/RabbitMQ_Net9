@@ -1,5 +1,5 @@
-﻿using RabbitMQ.Configure.Enums;
-using System.Threading.Tasks;
+﻿using RabbitMQ.Client.Exceptions;
+using RabbitMQ.Configure.Enums;
 
 namespace RabbitMQ.Configure.Interfaces {
 	/// <summary>
@@ -11,20 +11,25 @@ namespace RabbitMQ.Configure.Interfaces {
 		/// Asynchronously sends a message to the specified RabbitMQ queue.
 		/// </summary>
 		/// <param name="queueName">
-		/// The name of the RabbitMQ queue where the message should be sent.
+		/// The queue to which the message will be sent.
 		/// </param>
 		/// <param name="loginKey">
-		/// A unique identifier for the sender of the message.
-		/// This can be used for tracking or authentication purposes.
+		/// The login key associated with the message sender.
 		/// </param>
 		/// <param name="data">
-		/// The message content to be sent to the queue.
+		/// The content of the message to be sent.
 		/// </param>
 		/// <returns>
-		/// A <see cref="Task"/> representing the asynchronous operation of sending the message.
+		/// A <see cref="Task"/> representing the asynchronous operation.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		/// Thrown if <paramref name="loginKey"/> or <paramref name="data"/> is null or empty.
+		/// Thrown if <paramref name="queueName"/>, <paramref name="loginKey"/>, or <paramref name="data"/> is null or empty.
+		/// </exception>
+		/// <exception cref="AlreadyClosedException">
+		/// Thrown if the RabbitMQ connection is already closed.
+		/// </exception>
+		/// <exception cref="Exception">
+		/// Thrown if any unexpected error occurs while publishing the message.
 		/// </exception>
 		Task SendToQueue(EnRabbitMQQueue queueName, string loginKey, string data);
 	}

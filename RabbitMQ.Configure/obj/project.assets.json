@@ -840,23 +840,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SAI Programmer\\.nuget\\packages\\": {},
+    "C:\\Users\\kambi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\RabbitMQ.Configure.csproj",
+      "projectUniqueName": "C:\\Users\\kambi\\OneDrive\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\RabbitMQ.Configure.csproj",
       "projectName": "RabbitMQ.Configure",
-      "projectPath": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\RabbitMQ.Configure.csproj",
-      "packagesPath": "C:\\Users\\SAI Programmer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SAI Programmer\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\obj\\",
+      "projectPath": "C:\\Users\\kambi\\OneDrive\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\RabbitMQ.Configure.csproj",
+      "packagesPath": "C:\\Users\\kambi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kambi\\OneDrive\\Documents\\GitHub\\RabbitMQ_Net9\\RabbitMQ.Configure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\SAI Programmer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kambi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -927,7 +927,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
